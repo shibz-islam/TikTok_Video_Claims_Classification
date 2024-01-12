@@ -21,6 +21,8 @@ TikTok videos receive a large number of user reports for many different reasons.
 This project uses a dataset containing synthetic data created by TikTok. The dataset contains 12 columns and 19,382 rows, each row representing a different published TikTok video in which a claim/opinion has been made. In the dataset, in total 298 rows contained missing/null values and no duplicated rows. Since the number of rows containing null values is trivial, we removed these rows before futher processing. The dataset is balanced containing almost equal number of claim and opinion vidoes. 
 Categorical variables such as `claim_status`, `verified_status`, and `author_ban_status` are encoded to numerical values, where as `video_id` and `#` columns are dropped before the predictive analysis. Since the feature `video_transcripted_text` is text-based, a new feature named `text_length` is extracted through feature engineering process. Moreover, *bag-of-words* algorithm  is used to generate numerical features. More specifically, each video's transcription text is tokenized into both 2-grams and 3-grams, then the 15 most frequently occurring tokens are used as features.
 
+![Class Distribution](plots/class_dist.png)
+
 
 # Modeling and Evaluation 
 We built two tree-based classification models, XGBoost and Random Forest. Both models were used to predict on a held-out validation dataset, and final model selection was determined by the model with the best score. 
@@ -32,6 +34,7 @@ Both XGBoost and Random Forest achieved near perfect scores in terms of accuracy
 We select Random Forest as the final model and applied it to a test dataset to estimate future performance. The result shows that out of 3817 data instances, the model produces only 2 false positives and 3 false negatives.
 The most predictive features are the count variables, which represent high engagement levels. This is not unexpected, as analysis from our prior EDA pointed to this conclusion.
 
+<img src="plots/confusion_matrix.png" width="250" height="240"> <img src="plots/feat_imp.png" width="320" height="230">
 
 
 # Conclusion
