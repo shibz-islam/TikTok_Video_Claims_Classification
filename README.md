@@ -1,4 +1,4 @@
-# Project Title
+# TikTok Video Claims Classification
 Developing a predictive model to classify TikTok videos as claim or opinion using exploratory data analysis and machine learning.
 
 
